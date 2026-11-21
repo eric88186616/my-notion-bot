@@ -8,10 +8,12 @@ async function main() {
   await notion.databases.create({
     parent: { type: "page_id", page_id: pageId },
     title: [{ type: "text", text: { content: "AI灵感库" } }],
-    properties: {
-      "标题": { title: {} },
-      "链接": { url: {} },
-      "添加时间": { date: {} }
+    initial_data_source: {
+      properties: {
+        "标题": { title: {} },
+        "链接": { url: {} },
+        "添加时间": { date: {} }
+      }
     }
   });
   console.log("灵感库建好了！请去 Notion 查看。");
